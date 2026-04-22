@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RWJBH Heart Failure Readmission Risk Scoring System — Team Summary</title>
+<style>
+:root {
+  --blue: #003366;
+  --accent: #00a1de;
+  --green: #6cae3f;
+  --orange: #f7941d;
+  --dark: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f5f7; color: #333; line-height: 1.7; }
+.wrapper { max-width: 720px; margin: 0 auto; padding: 0; }
+.header { background: linear-gradient(135deg, var(--blue) 0%, #004d8c 50%, #0066b3 100%); color: #fff; padding: 40px 48px; }
+.header h1 { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+.header p { font-size: 13px; opacity: 0.8; }
+.badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; padding: 4px 12px; font-size: 11px; margin-top: 12px; }
+.badge strong { color: var(--accent); }
+.body { background: #fff; padding: 40px 48px; }
+h2 { font-size: 18px; color: var(--blue); font-weight: 700; margin: 28px 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid var(--accent); }
+h2:first-child { margin-top: 0; }
+h3 { font-size: 14px; color: var(--blue); font-weight: 700; margin: 20px 0 8px 0; }
+p { font-size: 14px; margin-bottom: 12px; }
+ul, ol { font-size: 14px; margin: 0 0 16px 24px; }
+li { margin-bottom: 6px; }
+.highlight { background: #f0f8ff; border-left: 4px solid var(--accent); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+.highlight strong { color: var(--blue); }
+.stat-row { display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap; }
+.stat-box { flex: 1; min-width: 120px; text-align: center; background: #f4f5f7; border-radius: 8px; padding: 16px 12px; }
+.stat-box .num { font-size: 28px; font-weight: 800; color: var(--accent); }
+.stat-box .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #666; }
+.phase-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+.phase-dot { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0; margin-top: 2px; }
+.dot-blue { background: var(--accent); }
+.dot-orange { background: var(--orange); }
+.dot-green { background: var(--green); }
+.phase-text { font-size: 14px; }
+.phase-text strong { color: var(--blue); }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 16px 0; font-size: 13px; }
+th { background: var(--blue); color: #fff; padding: 8px 12px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+td { padding: 8px 12px; border-bottom: 1px solid #eee; }
+tr:hover { background: #f8f9fa; }
+.cat-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+.footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 24px 48px; font-size: 12px; text-align: center; }
+.footer a { color: var(--accent); text-decoration: none; }
+.cta { display: inline-block; background: var(--accent); color: #fff; padding: 12px 28px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; margin: 8px 0; }
+.cta:hover { background: #008ec4; }
+.note { background: #fffde7; border-left: 4px solid var(--orange); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 13px; }
+@media (max-width: 600px) {
+  .header, .body, .footer { padding: 24px 20px; }
+  .stat-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="header">
+  <h1>Heart Failure Readmission Risk Scoring System</h1>
+  <p>RWJBarnabas Health &mdash; Clinical AI &bull; Multimodal Risk Prediction &bull; Built with Snowflake</p>
+  <div class="badge">Status: <strong>Phase 1 &mdash; Cardiologist Review</strong> &bull; v1.0</div>
+</div>
+
+<div class="body">
+
+<h2>What Is This?</h2>
+<p>We have built an interactive clinical decision-support application that guides the development of a <strong>multimodal heart failure 30-day readmission risk prediction model</strong> for RWJBarnabas Health's 12 acute care hospitals across New Jersey.</p>
+<p>The application is a single, self-contained HTML tool that serves as the <strong>command center</strong> for the entire model lifecycle &mdash; from cardiologist-led factor review through Snowflake-based training and deployment to Epic Hyperspace integration.</p>
+
+<div class="stat-row">
+  <div class="stat-box"><div class="num">91</div><div class="label">Risk Factors</div></div>
+  <div class="stat-box"><div class="num">7</div><div class="label">Data Categories</div></div>
+  <div class="stat-box"><div class="num">12</div><div class="label">RWJBH Hospitals</div></div>
+  <div class="stat-box"><div class="num">500+</div><div class="label">PubMed Studies</div></div>
+</div>
+
+<h2>What Problem Does It Solve?</h2>
+<p>Current HF readmission models (LACE, HOSPITAL score) rely on structured EHR data alone and plateau at <strong>AUC 0.59&ndash;0.65</strong>. Our approach combines seven data modalities to push performance toward <strong>AUC 0.75&ndash;0.82</strong>:</p>
+
+<table>
+  <thead><tr><th>Data Category</th><th>Example Factors</th><th>Impact</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Structured Clinical</strong></td><td>Ejection fraction, BNP, eGFR, hemoglobin, sodium</td><td>Baseline</td></tr>
+    <tr><td><strong>NLP / Unstructured</strong></td><td>Discharge summary sentiment, med adherence mentions, functional status in nursing notes</td><td>+5&ndash;9% AUC</td></tr>
+    <tr><td><strong>Social Determinants</strong></td><td>ADI, food insecurity, housing instability, insurance gaps</td><td>+2&ndash;4% AUC</td></tr>
+    <tr><td><strong>Behavioral</strong></td><td>Appointment no-shows, smoking status, substance use, depression (PHQ-9)</td><td>+1&ndash;3% AUC</td></tr>
+    <tr><td><strong>Imaging / Diagnostics</strong></td><td>Echo reports (AI-parsed), chest X-ray congestion, ECG rhythm classification</td><td>+1&ndash;2% AUC</td></tr>
+    <tr><td><strong>Temporal / Trajectory</strong></td><td>Weight trend (7-day), BNP trajectory, prior HF admissions (12-month)</td><td>+2&ndash;4% AUC</td></tr>
+    <tr><td><strong>Post-Discharge</strong></td><td>7-day follow-up, RPM/telehealth compliance, discharge med reconciliation</td><td>+1&ndash;3% AUC</td></tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+  <strong>Why this matters financially:</strong> RWJBH hospitals face CMS HRRP penalties for excess readmissions. Even a 1&ndash;2% improvement in readmission rates represents significant savings. In FY2026, 240 hospitals nationally face penalties &ge;1%. FY2027 adds Medicare Advantage data to all 6 measures, affecting 75&ndash;82% of hospitals.
+</div>
+
+<h2>What's Inside the Application</h2>
+<p>The app is organized into seven navigable sections:</p>
+
+<h3>1. System Overview</h3>
+<p>Hospital cards for all 12 RWJBH facilities with CMS star ratings and current HF readmission rates. Includes the evidence case for multimodal modeling (AUC comparison across structured-only, +NLP, and full multimodal approaches).</p>
+
+<h3>2. Quality Benchmarks</h3>
+<p>Comprehensive benchmarking with interactive charts:</p>
+<ul>
+  <li><strong>Readmission rates:</strong> RWJBH hospitals vs. national leaders (Cleveland Clinic, NYU, Mt. Sinai) and CMS national average</li>
+  <li><strong>NJ state context:</strong> Highest/lowest readmission states, NJ's position (~14.7%), HRRP penalty landscape</li>
+  <li><strong>National trend timeline:</strong> Medicare readmission rates 2010&ndash;2025 with HRRP, COVID, and MA milestones</li>
+  <li><strong>Mortality benchmarks:</strong> RWJBH hospital-level 30-day risk-standardized mortality rates (NQF #0229), comparison to Mayo/MGH/Cleveland Clinic, in-hospital and age-adjusted mortality trends 2000&ndash;2024, NJ mortality context</li>
+</ul>
+
+<h3>3. Research & Evidence Base</h3>
+<p>Seven curated research tabs with 50+ citations across:</p>
+<ul>
+  <li>RWJBH-specific publications</li>
+  <li>Foundational evidence (Frizzell, Rajkomar, Mortazavi)</li>
+  <li>NLP / unstructured data evidence</li>
+  <li>Social determinants of health evidence</li>
+  <li>Emerging factors (PubMed 2023&ndash;2025)</li>
+  <li>Code sets & data standards (ICD-10, SNOMED CT, LOINC, RxNorm, CPT)</li>
+  <li>State & policy evidence (Vizient, HRRP analysis, regional variation studies)</li>
+</ul>
+
+<h3>4. RWJBH Heart Stories</h3>
+<p>Curated patient stories and heart care content from across the RWJBH system, providing clinical context and human perspective on the readmission challenge.</p>
+
+<h3>5. State Case Studies</h3>
+<p>Six state-level case studies examining why readmission rates vary geographically: Massachusetts (highest at 15.3%), NJ/RWJBH (~14.7%), Idaho (lowest at 13.3%), West Virginia, Nevada, and synthesized lessons for RWJBH.</p>
+
+<h3>6. Risk Factor Review (Interactive)</h3>
+<p>The core clinical workflow. Cardiologists use this interface to review all 91 candidate risk factors:</p>
+<ul>
+  <li><strong>Include/exclude toggle</strong> for each factor</li>
+  <li><strong>Drag-and-drop reordering</strong> to prioritize factors</li>
+  <li><strong>Editable strength ratings</strong> (High / Moderate / Low / TBD)</li>
+  <li><strong>Evidence hyperlinks</strong> to PubMed/CMS sources for each factor</li>
+  <li><strong>Category filtering</strong> (Structured, NLP, SDoH, Behavioral, Imaging, Temporal, Post-Discharge, External)</li>
+  <li><strong>Custom factor addition</strong> for clinician-nominated factors not in the initial list</li>
+  <li>Data type, data source, and key code set annotations for every factor</li>
+</ul>
+
+<h3>7. Review & Model Creation</h3>
+<p>Phase tracking dashboard with review status controls, CSV/summary export, and a 5-phase development roadmap (see below). Status changes are timestamped with a persistent audit log.</p>
+
+<h2>The 5-Phase Development Roadmap</h2>
+
+<div class="phase-row">
+  <div class="phase-dot dot-blue">1</div>
+  <div class="phase-text"><strong>Cardiologist Review of Risk Factors</strong> (current phase)<br>Clinical review of 91 candidate factors. Inclusion/exclusion decisions documented with strength ratings, priority order, and code set mappings. Deliverable: approved risk factor list (CSV export).</div>
+</div>
+<div class="phase-row">
+  <div class="phase-dot dot-orange">2</div>
+  <div class="phase-text"><strong>Snowflake Data Element Scan & Gap Analysis</strong><br>Map each approved factor to available data in RWJBH's Snowflake warehouse (Epic Clarity/Caboodle, claims, ADT). Identify structured availability, NLP extraction needs, and external data enrichment requirements. Deliverable: data availability matrix with coverage % and gap remediation plan.</div>
+</div>
+<div class="phase-row">
+  <div class="phase-dot dot-orange">3</div>
+  <div class="phase-text"><strong>Model Create, Train & Test Cycles</strong><br>Iterative development in Snowflake using Snowpark ML and Snowflake Model Registry. Gradient boosting, logistic regression, and neural network candidates. k-fold cross-validation, hyperparameter tuning, fairness/bias evaluation. Target: AUC &gt; 0.75.</div>
+</div>
+<div class="phase-row">
+  <div class="phase-dot dot-orange">4</div>
+  <div class="phase-text"><strong>Model Deployment for Inference</strong><br>Real-time inference at two trigger points: index admission and index discharge. Snowpark Container Services or warehouse-based serving. Scoring pipeline writes to risk score table. Deliverable: production pipeline with monitoring and drift detection.</div>
+</div>
+<div class="phase-row">
+  <div class="phase-dot dot-orange">5</div>
+  <div class="phase-text"><strong>Epic Hyperspace Integration</strong><br>Risk scores surface in Epic patient charts via Snowflake&ndash;Epic integration. BPA alerts for high-risk patients, discharge planning workflows with model-driven recommendations. CDS Hooks and/or Snowflake External Functions for real-time delivery.</div>
+</div>
+
+<h2>How This Enables Other Models</h2>
+<p>While this application targets HF readmission, the framework is <strong>reusable across any clinical risk prediction use case</strong>:</p>
+
+<ul>
+  <li><strong>Sepsis early warning</strong> &mdash; same multimodal approach (vitals trajectory + NLP + labs)</li>
+  <li><strong>Surgical complication prediction</strong> &mdash; imaging + structured + temporal patterns</li>
+  <li><strong>ED return visits / observation stays</strong> &mdash; behavioral + SDoH + post-discharge signals</li>
+  <li><strong>Mortality risk stratification</strong> &mdash; already benchmarked in the app</li>
+  <li><strong>Length-of-stay prediction</strong> &mdash; same factor categories, different outcome variable</li>
+  <li><strong>CHF progression modeling</strong> &mdash; longitudinal EF trajectory + BNP trends + med adherence</li>
+</ul>
+
+<p>The Snowflake platform provides the foundation: centralized data warehouse, Snowpark ML for training, Model Registry for versioning, Container Services for inference, and native connectors to Epic. Once the first model is deployed, subsequent models follow the same pipeline with different feature sets and outcome definitions.</p>
+
+<div class="note">
+  <strong>Technical stack:</strong> Snowflake (data warehouse + ML platform) &bull; Snowpark ML (model training) &bull; Snowflake Model Registry (versioning) &bull; Snowpark Container Services (inference) &bull; Epic Clarity/Caboodle (source data) &bull; Epic Hyperspace + CDS Hooks (clinical integration)
+</div>
+
+<h2>How to Use the Application</h2>
+<ol>
+  <li><strong>Open the HTML file</strong> in any modern browser &mdash; no installation, server, or credentials required</li>
+  <li><strong>Navigate</strong> using the top nav bar across all seven sections</li>
+  <li><strong>Review benchmarks</strong> to understand where RWJBH stands relative to national leaders</li>
+  <li><strong>Explore the evidence base</strong> across seven research tabs and state case studies</li>
+  <li><strong>Review risk factors</strong> &mdash; toggle inclusion, reorder by priority, adjust strength ratings</li>
+  <li><strong>Add custom factors</strong> if the clinical team identifies factors not in the initial 91</li>
+  <li><strong>Mark review as complete</strong> when all factor decisions are finalized (timestamped audit log)</li>
+  <li><strong>Export</strong> the approved factor list as CSV or formatted summary for downstream use</li>
+</ol>
+
+<div class="highlight">
+  <strong>State is preserved.</strong> Review status and audit log are saved in your browser's local storage. Closing and reopening the file will restore your progress. To reset, clear your browser's local storage for this file.
+</div>
+
+<p style="text-align:center;margin-top:24px">
+  <a href="#" class="cta">Open the Application</a>
+</p>
+<p style="text-align:center;font-size:12px;color:#999">File: rwjbh_hf_readmission_2026.04.06.08.html</p>
+
+</div>
+
+<div class="footer">
+  RWJBarnabas Health &mdash; Heart Failure Readmission Risk Scoring System &bull; Built with <a href="https://www.snowflake.com">Snowflake</a><br>
+  Clinical Decision Support &bull; Internal Use Only &bull; April 2026
+</div>
+
+</div>
+
+</body>
+</html>

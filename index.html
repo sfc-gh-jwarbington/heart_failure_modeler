@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RWJBH Heart Failure Readmission Risk Scoring System</title>
+<style>
+:root { --blue: #003366; --accent: #00a1de; --green: #6cae3f; --dark: #1a1a2e; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f5f7; color: #333; min-height: 100vh; display: flex; flex-direction: column; }
+.header { background: linear-gradient(135deg, var(--blue) 0%, #004d8c 50%, #0066b3 100%); color: #fff; padding: 48px 40px; text-align: center; }
+.header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+.header p { font-size: 14px; opacity: 0.8; max-width: 600px; margin: 0 auto; }
+.content { flex: 1; max-width: 800px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 24px; width: 100%; }
+a.card { display: block; background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0,51,102,0.08); border: 1px solid #e8edf2; text-decoration: none; color: inherit; transition: all 0.3s; }
+a.card:hover { box-shadow: 0 8px 32px rgba(0,51,102,0.15); transform: translateY(-2px); }
+.card h2 { font-size: 20px; color: var(--blue); margin-bottom: 8px; }
+.card p { font-size: 14px; color: #666; line-height: 1.6; }
+.card .tag { display: inline-block; background: rgba(0,161,222,0.1); color: var(--accent); padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; margin-top: 12px; }
+.footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 24px; font-size: 12px; text-align: center; }
+.footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Heart Failure Readmission Risk Scoring System</h1>
+  <p>RWJBarnabas Health &mdash; Clinical AI &bull; Multimodal Risk Prediction &bull; Built with Snowflake</p>
+</div>
+<div class="content">
+  <a class="card" href="rwjbh_hf_readmission.html">
+    <h2>Risk Scoring Application</h2>
+    <p>Interactive clinical decision-support tool with 91 risk factors across 7 data categories, CMS quality benchmarks, research evidence base, cardiologist review interface with drag-and-drop prioritization, and a 5-phase Snowflake development roadmap.</p>
+    <span class="tag">Full Application</span>
+  </a>
+  <a class="card" href="RWJBH_HF_App_Summary.html">
+    <h2>Team Summary</h2>
+    <p>Email-ready overview of the project &mdash; what it is, why multimodal matters, what's inside the application, the development roadmap, and how the framework applies to other clinical risk models.</p>
+    <span class="tag">Summary &amp; Overview</span>
+  </a>
+</div>
+<div class="footer">
+  RWJBarnabas Health &bull; Clinical Decision Support &bull; Built with <a href="https://www.snowflake.com">Snowflake</a>
+</div>
+</body>
+</html>
